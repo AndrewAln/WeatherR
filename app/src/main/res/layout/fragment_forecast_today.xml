@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="wrap_content">
+    <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp" app:srcCompat="@drawable/ic_wind"
+            android:id="@+id/imageView2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="332dp" android:layout_marginBottom="146dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp" app:srcCompat="@drawable/ic_barometr"
+            android:id="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="332dp"
+            android:layout_marginBottom="88dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="88dp" app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp" app:srcCompat="@drawable/ic_humidity"
+            android:id="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="332dp" android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="146dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="73dp"
+            android:layout_height="16dp"
+            android:id="@+id/tvForecastWind" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="249dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="53dp"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="152dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="80dp"
+            android:layout_height="18dp"
+            android:id="@+id/tvForecastPressure" android:layout_marginBottom="94dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="242dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="53dp" android:layout_marginTop="94dp"
+            app:layout_constraintTop_toTopOf="parent" android:textSize="14sp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="29dp"
+            android:layout_height="16dp"
+            android:id="@+id/tvForecastHumidity" android:layout_marginEnd="293dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="53dp"
+            android:layout_marginBottom="36dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="152dp" app:layout_constraintTop_toTopOf="parent" android:textSize="14sp"/>
+    <android.support.v7.widget.RecyclerView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="165dp" android:layout_width="210dp" android:layout_height="match_parent"
+            android:id="@+id/rvToday"/>
+</android.support.constraint.ConstraintLayout>
