@@ -32,7 +32,6 @@ class FragmentWeather : Fragment() {
     }
 
     private fun initView(weather: ResponseWeather?) {
-
         tvWeatherTemp.text = weather?.weatherInformation?.temp?.convertDoubleToString()
         tvWeatherDesc.text = weather?.weatherCondition?.get(0)?.description?.capitalize()
         Glide.with(context!!).load(weather?.weatherCondition!![0].icon.getIcon()).into(igWeatherIcon)
