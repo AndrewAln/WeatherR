@@ -8,8 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import basaraba.andrii.weatherr.R
+import basaraba.andrii.weatherr.convertDoubleToString
+import basaraba.andrii.weatherr.getIcon
 import basaraba.andrii.weatherr.model.weather.ResponseWeather
 import basaraba.andrii.weatherr.ui.WeatherViewModel
+import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_weather.*
 
 class FragmentWeather : Fragment() {
@@ -28,7 +32,9 @@ class FragmentWeather : Fragment() {
     }
 
     private fun initView(weather: ResponseWeather?) {
-        tvWeatherTemp.text = "+${weather?.weatherInformation?.temp?.toInt()}"
-        tvWeatherDesc.text = "${weather?.weatherCondition?.get(0)?.description}"
+
+        tvWeatherTemp.text = weather?.weatherInformation?.temp?.convertDoubleToString()
+        tvWeatherDesc.text = weather?.weatherCondition?.get(0)?.description?.capitalize()
+        Glide.with(context!!).load(weather?.weatherCondition!![0].icon.getIcon()).into(igWeatherIcon)
     }
 }

@@ -32,6 +32,7 @@
             android:text="TextView"
             android:layout_width="73dp"
             android:layout_height="16dp"
+            android:textColor="#ffff"
             android:id="@+id/tvForecastWind" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="249dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="53dp"
@@ -41,6 +42,7 @@
             android:text="TextView"
             android:layout_width="80dp"
             android:layout_height="18dp"
+            android:textColor="#ffff"
             android:id="@+id/tvForecastPressure" android:layout_marginBottom="94dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="242dp" app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
             android:text="TextView"
             android:layout_width="29dp"
             android:layout_height="16dp"
+            android:textColor="#ffff"
             android:id="@+id/tvForecastHumidity" android:layout_marginEnd="293dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="53dp"
@@ -59,6 +62,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="165dp" android:layout_width="210dp" android:layout_height="match_parent"
+            android:layout_marginStart="140dp" android:layout_width="210dp" android:layout_height="match_parent"
             android:id="@+id/rvToday"/>
 </android.support.constraint.ConstraintLayout>

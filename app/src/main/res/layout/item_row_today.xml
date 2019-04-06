@@ -4,22 +4,21 @@
               android:layout_height="wrap_content" android:orientation="vertical">
 
     <TextView
-            android:text="TextView"
-            android:layout_width="29dp"
+            android:layout_width="wrap_content"
             android:layout_height="16dp"
-            android:id="@+id/tvRowTodayTime"
-            android:layout_marginTop="36dp"/>
+            android:textColor="#ffff"
+            android:id="@+id/tvRowTodayTime"/>
     <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:srcCompat="@mipmap/ic_launcher"
             android:id="@+id/igRowToday"
             android:layout_marginTop="32dp"
-    android:layout_marginRight="30dp"/>
+            android:layout_marginRight="20dp"/>
     <TextView
-            android:text="TextView"
             android:layout_width="38dp"
             android:layout_height="20dp"
+            android:textColor="#ffff"
             android:id="@+id/tvRowTodayTemp"
             android:layout_marginTop="28dp"/>
 </LinearLayout>

@@ -22,7 +22,7 @@ class FragmentForecastToday : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ForecastViewModel::class.java)
-        forecastTodayAdapter = ForecastTodayAdapter()
+        forecastTodayAdapter = ForecastTodayAdapter(context!!)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

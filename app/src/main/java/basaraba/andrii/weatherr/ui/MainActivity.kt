@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import basaraba.andrii.weatherr.CITY_WEATHER
 import basaraba.andrii.weatherr.R
 import basaraba.andrii.weatherr.adapter.ForecastTodayAdapter
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
@@ -19,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProviders.of(this).get(ForecastViewModel::class.java)
-        forecastTodayAdapter = ForecastTodayAdapter()
-
+        forecastTodayAdapter = ForecastTodayAdapter(this)
+        tvToolbar.text = CITY_WEATHER.toUpperCase()
         rvDaily.adapter = forecastTodayAdapter
         rvDaily.layoutManager = LinearLayoutManager(application)
         viewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
