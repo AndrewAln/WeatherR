@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import basaraba.andrii.weatherr.R
-import basaraba.andrii.weatherr.adapter.ForecastTodayAdapter
+import basaraba.andrii.weatherr.adapter.ForecastDailyAdapter
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
 import basaraba.andrii.weatherr.ui.ForecastDailyViewModel
 import kotlinx.android.synthetic.main.fragment_forecast_daily.*
@@ -17,11 +17,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class FragmentForecastDaily : Fragment() {
 
     private val dailyViewModel: ForecastDailyViewModel by viewModel()
-    private lateinit var forecastTodayAdapter: ForecastTodayAdapter
+    private lateinit var forecastDailyAdapter: ForecastDailyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        forecastTodayAdapter = ForecastTodayAdapter(context!!)
+        forecastDailyAdapter = ForecastDailyAdapter(context!!)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,11 +32,11 @@ class FragmentForecastDaily : Fragment() {
         super.onActivityCreated(savedInstanceState)
         dailyViewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
 
-        activity?.rvDaily?.adapter = forecastTodayAdapter
+        activity?.rvDaily?.adapter = forecastDailyAdapter
         activity?.rvDaily?.layoutManager = LinearLayoutManager(context)
     }
 
     private fun fillRecycler(forecast: ResponseForecast?) {
-        forecastTodayAdapter.addListForecast(forecast?.list!!)
+        forecastDailyAdapter.addListForecast(forecast?.list!!)
     }
 }

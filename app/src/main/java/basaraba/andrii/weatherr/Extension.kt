@@ -2,6 +2,7 @@ package basaraba.andrii.weatherr
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun String.getIcon(): Int {
@@ -28,6 +29,10 @@ fun String.getIcon(): Int {
     }
 }
 
+fun Double.convertSpeed(): Int {
+    return (this * 3.6).toInt()
+}
+
 fun Double.convertDoubleToString(): String {
     val temp = this.toInt()
     return if (temp > 0)
@@ -37,9 +42,16 @@ fun Double.convertDoubleToString(): String {
 }
 
 @SuppressLint("SimpleDateFormat")
-fun String.formatDate(): String {
-    val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-    val outputFormat = SimpleDateFormat("HH:mm")
-    val date = inputFormat.parse(this)
-    return outputFormat.format(date)
+fun String.formatToDate(): String {
+    return SimpleDateFormat("HH:mm").format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this))
+}
+
+@SuppressLint("SimpleDateFormat")
+fun String.formatToDay(): String {
+    return SimpleDateFormat("EEEE", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this)).capitalize()
+}
+
+@SuppressLint("SimpleDateFormat")
+fun String.formatToMonth(): String {
+    return SimpleDateFormat("MMMM d", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this)).capitalize()
 }

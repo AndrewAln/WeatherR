@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import basaraba.andrii.weatherr.R
 import basaraba.andrii.weatherr.adapter.ForecastTodayAdapter
+import basaraba.andrii.weatherr.convertSpeed
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
 import basaraba.andrii.weatherr.ui.ForecastTodayViewModel
 import kotlinx.android.synthetic.main.fragment_forecast_today.*
@@ -40,7 +41,7 @@ class FragmentForecastToday : Fragment() {
     private fun fillRecycler(forecast: ResponseForecast?) {
         forecastTodayAdapter.addListForecast(forecast?.list!!)
 
-        tvForecastWind.text = "${forecast.list[0].wind.speed.toInt()} km/h SE"
+        tvForecastWind.text = "${forecast.list[0].wind.speed.convertSpeed()} km/h SE"
         tvForecastPressure.text = "${forecast.list[0].weatherInformation.pressure.toInt()} mmHg"
         tvForecastHumidity.text = "${forecast.list[0].weatherInformation.humidity}%"
     }

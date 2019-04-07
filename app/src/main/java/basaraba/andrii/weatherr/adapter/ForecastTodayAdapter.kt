@@ -5,10 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import basaraba.andrii.weatherr.R
-import basaraba.andrii.weatherr.convertDoubleToString
-import basaraba.andrii.weatherr.formatDate
-import basaraba.andrii.weatherr.getIcon
+import basaraba.andrii.weatherr.*
 import basaraba.andrii.weatherr.model.forecast.Forecast
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row_today.view.*
@@ -37,7 +34,7 @@ class ForecastTodayAdapter(private val context: Context) : RecyclerView.Adapter<
         val forecast = listForecast[position]
 
         holder.textTemp.text = forecast.weatherInformation.temp.convertDoubleToString()
-        holder.textTime.text = forecast.dateForecast.formatDate()
+        holder.textTime.text = forecast.dateForecast.formatToDate()
         Glide.with(context).load(forecast?.weatherCondition!![0].icon.getIcon()).into(holder.imageIcon)
     }
 
