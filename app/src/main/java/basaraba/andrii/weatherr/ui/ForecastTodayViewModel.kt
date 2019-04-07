@@ -8,18 +8,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class ForecastViewModel(private val repository: Repository) : ViewModel() {
+class ForecastTodayViewModel(private val repository: Repository) : ViewModel() {
 
     private lateinit var subscription: Disposable
 
     val forecast = MutableLiveData<ResponseForecast>()
 
     init {
-        getForecast()
+        getForecastToday()
     }
 
-    private fun getForecast() {
-        subscription = repository.getForecast().subscribeOn(Schedulers.io())
+    private fun getForecastToday() {
+        subscription = repository.getForecastToday().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ forecast.value = it },
                 {})

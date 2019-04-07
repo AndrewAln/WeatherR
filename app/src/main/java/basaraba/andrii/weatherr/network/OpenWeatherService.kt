@@ -15,7 +15,14 @@ interface OpenWeatherService {
     ): Single<ResponseWeather>
 
     @GET("forecast/hourly")
-    fun getForecast(
+    fun getForecastToday(
+        @Query("appid") apiKey: String,
+        @Query("q") query: String,
+        @Query("units") units: String
+    ): Single<ResponseForecast>
+
+    @GET("forecast")
+    fun getForecastDaily(
         @Query("appid") apiKey: String,
         @Query("q") query: String,
         @Query("units") units: String

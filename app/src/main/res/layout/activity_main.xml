@@ -16,7 +16,7 @@
         <TextView
                 android:layout_gravity="center"
                 android:textColor="#ffff"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvToolbar" android:textStyle="bold"/>
@@ -26,13 +26,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvDaily"
+        <fragment
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
+                android:layout_height="wrap_content"
+                android:name="basaraba.andrii.weatherr.fragments.FragmentForecastDaily"
+                android:id="@+id/fragmentForecastDaily"/>
         <android.support.design.widget.AppBarLayout
                 android:id="@+id/appbar"
                 android:layout_width="match_parent"
@@ -57,14 +56,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:name="basaraba.andrii.weatherr.fragments.FragmentWeather"
-                            android:id="@+id/fragment" app:layout_constraintTop_toTopOf="parent"
+                            android:id="@+id/fragmentWeather" app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
                     <fragment
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:name="basaraba.andrii.weatherr.fragments.FragmentForecastToday"
-                            android:id="@+id/fragment2"
-                            app:layout_constraintTop_toBottomOf="@+id/fragment"
+                            android:id="@+id/fragmentForecastToday"
+                            app:layout_constraintTop_toBottomOf="@+id/fragmentWeather"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"/>
                 </LinearLayout>

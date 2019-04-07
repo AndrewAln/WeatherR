@@ -15,7 +15,9 @@ class Repository(private val openWeatherService: OpenWeatherService) {
     fun getWeather(): Single<ResponseWeather> =
         openWeatherService.getWeatherCity(API_KEY, CITY_WEATHER, UNIT_SYSTEM)
 
-    fun getForecast(): Single<ResponseForecast> =
-        openWeatherService.getForecast(API_KEY, CITY_WEATHER, UNIT_SYSTEM)
+    fun getForecastToday(): Single<ResponseForecast> =
+        openWeatherService.getForecastToday(API_KEY, CITY_WEATHER, UNIT_SYSTEM)
 
+    fun getForecastDaily(): Single<ResponseForecast> =
+        openWeatherService.getForecastDaily(API_KEY, CITY_WEATHER, UNIT_SYSTEM)
 }

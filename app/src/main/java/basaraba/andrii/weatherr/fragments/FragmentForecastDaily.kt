@@ -1,6 +1,5 @@
 package basaraba.andrii.weatherr.fragments
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,13 +10,13 @@ import android.view.ViewGroup
 import basaraba.andrii.weatherr.R
 import basaraba.andrii.weatherr.adapter.ForecastTodayAdapter
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
-import basaraba.andrii.weatherr.ui.ForecastTodayViewModel
-import kotlinx.android.synthetic.main.fragment_forecast_today.*
+import basaraba.andrii.weatherr.ui.ForecastDailyViewModel
+import kotlinx.android.synthetic.main.fragment_forecast_daily.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FragmentForecastToday : Fragment() {
+class FragmentForecastDaily : Fragment() {
 
-    private val todayViewModel: ForecastTodayViewModel by viewModel()
+    private val dailyViewModel: ForecastDailyViewModel by viewModel()
     private lateinit var forecastTodayAdapter: ForecastTodayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,22 +25,18 @@ class FragmentForecastToday : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_forecast_today, container, false)
+        return inflater.inflate(R.layout.fragment_forecast_daily, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        todayViewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
-        activity?.rvToday?.adapter = forecastTodayAdapter
-        activity?.rvToday?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        dailyViewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
+
+        activity?.rvDaily?.adapter = forecastTodayAdapter
+        activity?.rvDaily?.layoutManager = LinearLayoutManager(context)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun fillRecycler(forecast: ResponseForecast?) {
         forecastTodayAdapter.addListForecast(forecast?.list!!)
-
-        tvForecastWind.text = "${forecast.list[0].wind.speed.toInt()} km/h SE"
-        tvForecastPressure.text = "${forecast.list[0].weatherInformation.pressure.toInt()} mmHg"
-        tvForecastHumidity.text = "${forecast.list[0].weatherInformation.humidity}%"
     }
 }

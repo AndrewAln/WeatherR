@@ -8,7 +8,13 @@ class WeatherApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            modules(DependenciesModules().appModule)
+            modules(
+                listOf(
+                    DependenciesModules().viewModule,
+                    DependenciesModules().apiModule,
+                    DependenciesModules().repoModule
+                )
+            )
         }
     }
 }
