@@ -31,9 +31,8 @@ class FragmentForecastDaily : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         dailyViewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
-
-        activity?.rvDaily?.adapter = forecastDailyAdapter
-        activity?.rvDaily?.layoutManager = LinearLayoutManager(context)
+        rvDaily?.adapter = forecastDailyAdapter
+        rvDaily?.layoutManager = LinearLayoutManager(context)
     }
 
     private fun fillRecycler(forecast: ResponseForecast?) {

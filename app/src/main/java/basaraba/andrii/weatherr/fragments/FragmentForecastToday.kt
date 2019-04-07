@@ -33,8 +33,8 @@ class FragmentForecastToday : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         todayViewModel.forecast.observe(this, Observer { result -> fillRecycler(result) })
-        activity?.rvToday?.adapter = forecastTodayAdapter
-        activity?.rvToday?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvToday?.adapter = forecastTodayAdapter
+        rvToday?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     @SuppressLint("SetTextI18n")
