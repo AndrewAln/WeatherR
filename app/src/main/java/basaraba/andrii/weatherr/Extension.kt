@@ -1,6 +1,9 @@
 package basaraba.andrii.weatherr
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.support.annotation.AttrRes
+import android.util.TypedValue
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,10 +51,21 @@ fun String.formatToDate(): String {
 
 @SuppressLint("SimpleDateFormat")
 fun String.formatToDay(): String {
-    return SimpleDateFormat("EEEE", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this)).capitalize()
+    return SimpleDateFormat("EEEE", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this))
+        .capitalize()
 }
 
 @SuppressLint("SimpleDateFormat")
 fun String.formatToMonth(): String {
-    return SimpleDateFormat("MMMM d", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this)).capitalize()
+    return SimpleDateFormat("MMMM d", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this))
+        .capitalize()
+}
+
+fun Context.getColorFromAttr(
+    @AttrRes attrColor: Int,
+    typedValue: TypedValue = TypedValue(),
+    resolveRefs: Boolean = true
+): Int {
+    theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+    return typedValue.data
 }

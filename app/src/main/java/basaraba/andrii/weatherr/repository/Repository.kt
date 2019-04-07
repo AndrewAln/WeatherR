@@ -6,7 +6,6 @@ import basaraba.andrii.weatherr.UNIT_SYSTEM
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
 import basaraba.andrii.weatherr.model.weather.ResponseWeather
 import basaraba.andrii.weatherr.network.OpenWeatherService
-import basaraba.andrii.weatherr.network.RetrofitClient
 import io.reactivex.Single
 
 

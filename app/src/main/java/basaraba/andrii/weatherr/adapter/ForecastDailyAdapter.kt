@@ -22,7 +22,7 @@ class ForecastDailyAdapter(private val context: Context) : RecyclerView.Adapter<
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ForecastDailyAdapter.ForecastHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_row_daily, parent, false);
+            .inflate(R.layout.item_row_daily, parent, false)
         return ForecastHolder(itemView)
     }
 
@@ -38,10 +38,10 @@ class ForecastDailyAdapter(private val context: Context) : RecyclerView.Adapter<
         holder.textDate.text = forecast.dateForecast.formatToDate()
         holder.textDay.text = forecast.dateForecast.formatToDay()
         holder.textMonth.text = forecast.dateForecast.formatToMonth()
-        holder.textHumidity.text = "${forecast.weatherInformation.humidity} %"
+        holder.textHumidity.text = "${forecast.weatherInformation.humidity}%"
         holder.textWind.text = "SE ${forecast.wind.speed.convertSpeed()} km/h"
         holder.textWeather.text = forecast.weatherCondition[0].description.capitalize()
-        Glide.with(context).load(forecast?.weatherCondition!![0].icon.getIcon()).into(holder.imageIcon)
+        Glide.with(context).load(forecast.weatherCondition[0].icon.getIcon()).into(holder.imageIcon)
     }
 
     class ForecastHolder(view: View) : RecyclerView.ViewHolder(view) {
