@@ -8,9 +8,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class ForecastViewModel : ViewModel() {
+class ForecastViewModel(private val repository: Repository) : ViewModel() {
 
-    private var repository: Repository = Repository()
     private lateinit var subscription: Disposable
 
     val forecast = MutableLiveData<ResponseForecast>()

@@ -1,7 +1,6 @@
 package basaraba.andrii.weatherr.fragments
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,22 +12,20 @@ import basaraba.andrii.weatherr.getIcon
 import basaraba.andrii.weatherr.model.weather.ResponseWeather
 import basaraba.andrii.weatherr.ui.WeatherViewModel
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_weather.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FragmentWeather : Fragment() {
 
-    private lateinit var viewModel: WeatherViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
-    }
+    private val viewModel: WeatherViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_weather, container, false)
+        return inflater.inflate(R.layout.fragment_weather, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel.weather.observe(this, Observer { result -> initView(result) })
-        return view
     }
 
     private fun initView(weather: ResponseWeather?) {
