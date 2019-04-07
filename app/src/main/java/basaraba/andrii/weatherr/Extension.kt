@@ -52,7 +52,7 @@ fun String.formatToDate(): String {
 @SuppressLint("SimpleDateFormat")
 fun String.formatToDay(): String {
     return SimpleDateFormat("EEEE", Locale.ENGLISH).format(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this))
-        .capitalize()
+        .toUpperCase()
 }
 
 @SuppressLint("SimpleDateFormat")
