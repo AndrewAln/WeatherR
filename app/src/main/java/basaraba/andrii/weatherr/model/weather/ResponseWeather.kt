@@ -6,7 +6,7 @@ import basaraba.andrii.weatherr.model.forecast.WeatherInformation
 import basaraba.andrii.weatherr.model.forecast.Wind
 import com.google.gson.annotations.SerializedName
 
-class ResponseWeather(
+data class ResponseWeather(
     @SerializedName("coord")
     val coordinates: Coordinates,
     @SerializedName("weather")
