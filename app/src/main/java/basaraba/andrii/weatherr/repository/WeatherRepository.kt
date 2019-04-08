@@ -9,7 +9,7 @@ import basaraba.andrii.weatherr.network.OpenWeatherService
 import io.reactivex.Single
 
 
-class Repository(private val openWeatherService: OpenWeatherService) {
+class WeatherRepository(private val openWeatherService: OpenWeatherService) {
 
     fun getWeather(): Single<ResponseWeather> =
         openWeatherService.getWeatherCity(API_KEY, CITY_WEATHER, UNIT_SYSTEM)

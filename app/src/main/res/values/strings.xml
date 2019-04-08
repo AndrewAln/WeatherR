@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherR</string>
+    <string name="convert_speed_today">%1$d km/h SE</string>
+    <string name="convert_speed_daily">SE %1$d km/h</string>
+    <string name="convert_pressure">%1$d mmHg</string>
+    <string name="convert_humidity">%1$d%%</string>
 </resources>

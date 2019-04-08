@@ -12,17 +12,13 @@ import basaraba.andrii.weatherr.adapter.ForecastDailyAdapter
 import basaraba.andrii.weatherr.model.forecast.ResponseForecast
 import basaraba.andrii.weatherr.ui.ForecastDailyViewModel
 import kotlinx.android.synthetic.main.fragment_forecast_daily.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FragmentForecastDaily : Fragment() {
 
     private val dailyViewModel: ForecastDailyViewModel by viewModel()
-    private lateinit var forecastDailyAdapter: ForecastDailyAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        forecastDailyAdapter = ForecastDailyAdapter(context!!)
-    }
+    private val forecastDailyAdapter: ForecastDailyAdapter by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_forecast_daily, container, false)

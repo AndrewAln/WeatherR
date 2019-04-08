@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
-    private fun getRetrofitService(): Retrofit {
+    fun getRetrofitService(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -15,7 +15,7 @@ class RetrofitClient {
             .build()
     }
 
-    fun getService(): OpenWeatherService {
-        return getRetrofitService().create(OpenWeatherService::class.java)
+    fun getService(retrofit: Retrofit): OpenWeatherService {
+        return retrofit.create(OpenWeatherService::class.java)
     }
 }

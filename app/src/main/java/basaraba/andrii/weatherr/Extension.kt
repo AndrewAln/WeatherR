@@ -32,11 +32,9 @@ fun String.getIcon(): Int {
     }
 }
 
-fun Double.convertSpeed(): Int {
-    return (this * 3.6).toInt()
-}
+fun Double.convertSpeed(): Int = (this * 3.6).toInt()
 
-fun Double.convertDoubleToString(): String {
+fun Double.convertDoubleToTemperature(): String {
     val temp = this.toInt()
     return if (temp > 0)
         "+$temp°"

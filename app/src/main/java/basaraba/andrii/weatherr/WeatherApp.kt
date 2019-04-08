@@ -12,7 +12,8 @@ class WeatherApp : Application() {
                 listOf(
                     DependenciesModules().viewModule,
                     DependenciesModules().apiModule,
-                    DependenciesModules().repoModule
+                    DependenciesModules().repoModule,
+                    DependenciesModules().adapterModule
                 )
             )
         }

@@ -3,12 +3,12 @@ package basaraba.andrii.weatherr.ui
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import basaraba.andrii.weatherr.model.weather.ResponseWeather
-import basaraba.andrii.weatherr.repository.Repository
+import basaraba.andrii.weatherr.repository.WeatherRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class WeatherViewModel(private val repository: Repository) : ViewModel() {
+class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewModel() {
 
     private lateinit var subscription: Disposable
 
@@ -19,7 +19,7 @@ class WeatherViewModel(private val repository: Repository) : ViewModel() {
     }
 
     private fun getWeather() {
-        subscription = repository.getWeather().subscribeOn(Schedulers.io())
+        subscription = weatherRepository.getWeather().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ weather.value = it },
                 { })

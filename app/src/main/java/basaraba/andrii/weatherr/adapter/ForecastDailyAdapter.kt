@@ -1,7 +1,5 @@
 package basaraba.andrii.weatherr.adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +9,7 @@ import basaraba.andrii.weatherr.model.forecast.Forecast
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row_daily.view.*
 
-class ForecastDailyAdapter(private val context: Context) : RecyclerView.Adapter<ForecastDailyAdapter.ForecastHolder>() {
+class ForecastDailyAdapter : RecyclerView.Adapter<ForecastDailyAdapter.ForecastHolder>() {
 
     private var listForecast: ArrayList<Forecast> = ArrayList()
 
@@ -30,29 +28,24 @@ class ForecastDailyAdapter(private val context: Context) : RecyclerView.Adapter<
         return listForecast.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ForecastDailyAdapter.ForecastHolder, position: Int) {
-        val forecast = listForecast[position]
-
-        holder.textTemp.text = forecast.weatherInformation.temp.convertDoubleToString()
-        holder.textDate.text = forecast.dateForecast.formatToDate()
-        holder.textDay.text = forecast.dateForecast.formatToDay()
-        holder.textMonth.text = forecast.dateForecast.formatToMonth()
-        holder.textHumidity.text = "${forecast.weatherInformation.humidity}%"
-        holder.textWind.text = "SE ${forecast.wind.speed.convertSpeed()} km/h"
-        holder.textWeather.text = forecast.weatherCondition[0].description.capitalize()
-        Glide.with(context).load(forecast.weatherCondition[0].icon.getIcon()).into(holder.imageIcon)
+        holder.onBind(listForecast[position])
     }
 
     class ForecastHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageIcon = view.igRowDaily
-        val textTemp = view.tvRowDailyTemp
-        val textWeather = view.tvRowDailyWeather
-        val textHumidity = view.tvRowDailyHumidity
-        val textWind = view.tvRowDailyWind
-        val textDate = view.tvRowDailyDate
-        val textDay = view.tvRowDailyDay
-        val textMonth = view.tvRowDailyMonth
+        private val view = view
 
+        fun onBind(forecast: Forecast) {
+            view.tvRowDailyTemp.text = forecast.weatherInformation.temp.convertDoubleToTemperature()
+            view.tvRowDailyDate.text = forecast.dateForecast.formatToDate()
+            view.tvRowDailyDay.text = forecast.dateForecast.formatToDay()
+            view.tvRowDailyMonth.text = forecast.dateForecast.formatToMonth()
+            view.tvRowDailyHumidity.text =
+                view.context.getString(R.string.convert_humidity, forecast.weatherInformation.humidity)
+            view.tvRowDailyWind.text =
+                view.context.getString(R.string.convert_speed_daily, forecast.wind.speed.convertSpeed())
+            view.tvRowDailyWeather.text = forecast.weatherCondition[0].description.capitalize()
+            Glide.with(view.context).load(forecast.weatherCondition[0].icon.getIcon()).into(view.igRowDaily)
+        }
     }
 }

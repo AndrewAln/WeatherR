@@ -1,12 +1,11 @@
 package basaraba.andrii.weatherr.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import basaraba.andrii.weatherr.R
-import basaraba.andrii.weatherr.convertDoubleToString
+import basaraba.andrii.weatherr.convertDoubleToTemperature
 import basaraba.andrii.weatherr.formatToDate
 import basaraba.andrii.weatherr.getIcon
 import basaraba.andrii.weatherr.model.forecast.Forecast
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row_today.view.*
 
 
-class ForecastTodayAdapter(private val context: Context) : RecyclerView.Adapter<ForecastTodayAdapter.ForecastHolder>() {
+class ForecastTodayAdapter : RecyclerView.Adapter<ForecastTodayAdapter.ForecastHolder>() {
 
     private var listForecast: ArrayList<Forecast> = ArrayList()
 
@@ -34,17 +33,17 @@ class ForecastTodayAdapter(private val context: Context) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ForecastTodayAdapter.ForecastHolder, position: Int) {
-        val forecast = listForecast[position]
-
-        holder.textTemp.text = forecast.weatherInformation.temp.convertDoubleToString()
-        holder.textTime.text = forecast.dateForecast.formatToDate()
-        Glide.with(context).load(forecast.weatherCondition[0].icon.getIcon()).into(holder.imageIcon)
+        holder.onBind(listForecast[position])
     }
 
     class ForecastHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textTime = view.tvRowTodayTime
-        val textTemp = view.tvRowTodayTemp
-        val imageIcon = view.igRowToday
+        private val view = view
+
+        fun onBind(forecast: Forecast) {
+            view.tvRowTodayTemp.text = forecast.weatherInformation.temp.convertDoubleToTemperature()
+            view.tvRowTodayTime.text = forecast.dateForecast.formatToDate()
+            Glide.with(view.context).load(forecast.weatherCondition[0].icon.getIcon()).into(view.igRowToday)
+        }
 
     }
 }
