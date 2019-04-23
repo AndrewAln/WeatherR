@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewModel() {
 
-    private lateinit var subscription: Disposable
+    private var subscription: Disposable? = null
 
     val weather = MutableLiveData<ResponseWeather>()
 
@@ -27,6 +27,7 @@ class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewM
 
     override fun onCleared() {
         super.onCleared()
-        subscription.dispose()
+        if (subscription != null)
+            subscription?.dispose()
     }
 }
